@@ -11,3 +11,7 @@ output "cluster_name" {
 output "efs" {
   value = module.eks.efs
 }
+
+output "s3" {
+  value = module.s3.s3_bucket_id
+}
