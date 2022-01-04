@@ -21,3 +21,32 @@ module "eks" {
   asg_desired_capacity_group1 = var.asg_desired_capacity_group1
   asg_desired_capacity_group2 = var.asg_desired_capacity_group2
 }
+
+module "s3" {
+  source = "./modules/s3"
+
+  vpc_id_s3   = module.networking.vpc_id
+  subnet_s3 = module.networking.private_subnets_ids
+
+  bucket_prefix = var.bucket_prefix
+  acl           = var.acl
+  versioning    = var.versioning
+}
+
+module "rds" {
+  source = "./modules/rds"
+
+  vpc_id_rds        = module.networking.vpc_id
+  subnets_rds        = module.networking.public_subnets_ids
+
+  allocated_storage   = var.allocated_storage
+  db_engine           = var.db_engine
+  db_port             = var.db_port
+  engine_version      = var.engine_version
+  instance_type       = var.instance_type
+  database_name       = var.database_name
+  db_username         = var.db_username
+  db_password         = var.db_password
+  publicly_accessible = var.publicly_accessible
+  availability_zone   = var.availability_zone[0]
+}

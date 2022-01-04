@@ -26,3 +26,9 @@ asg_desired_capacity_group1 = 1
 
 asg_desired_capacity_group2 = 1
 
+#### S3 variables ####
+bucket_prefix = "s3-Data-bootcamp-"
+
+acl = "private"
+
+versioning = true

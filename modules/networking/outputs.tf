@@ -11,7 +11,7 @@ output "public_subnets_route_table_id" {
 }
 
 output "public_subnets_ids" {
-  value = aws_subnet.public_subnet.id
+  value = aws_subnet.public_subnet.*.id
 }
 
 output "private_subnets_route_table_id" {
@@ -23,7 +23,7 @@ output "private_subnets_ids" {
 }
 
 output "nat_gw_ids" {
-  value = aws_nat_gateway.nat.id
+  value = aws_nat_gateway.nat.*.id
 }
 
 output "internet_gateway_id" {
